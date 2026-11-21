@@ -1,0 +1,231 @@
+1. CRM – Maestro de comercios
+Fuente: archivos CSV de snapshots semanales completos.
+
+Tabla Bronze: crm_comercios
+
+Volumen revisado: 17.558 registros, distribuidos en 9 snapshots.
+Ola	Snapshots	Registros
+ola_1	5	9.665
+ola_2	4	7.893
+Total	9	17.558
+
+1.1 Hallazgos de calidad
+Hallazgo 1. Registros duplicados dentro del mismo snapshot
+326 registros involucrados
+- Se identificaron 163 grupos de llaves duplicadas.
+- Cada grupo contiene dos registros.
+- Llave evaluada: pais + comercio_id + snapshot_date.
+- Los 326 registros involucrados representan el 1,86 % del total.
+- Los registros de cada grupo duplicado son idénticos en sus atributos.
+
+Impacto en las cifras:
+Si se utilizan estos registros directamente para contar comercios o realizar cruces con transacciones, se pueden duplicar comercios dentro de un mismo snapshot y generar resultados incorrectos.
+
+Decisión:
+- Conservar todos los registros en Bronze.
+- No eliminar duplicados durante la ingesta.
+- En Silver, deduplicar utilizando pais, comercio_id y snapshot_date.
+- Mantener un único registro por comercio dentro de cada fotografía semanal.
+
+La razón para incluir snapshot_date es que el mismo comercio puede aparecer legítimamente en diferentes semanas.
+
+Hallazgo 2. Espacios adicionales en el nombre comercial
+539 registros
+- Campo: nombre_comercial.
+- Registros afectados: 539.
+- Porcentaje: 3,07 %.
+
+Impacto en las cifras:
+Los espacios pueden ocasionar inconsistencias al comparar nombres, agrupar comercios o realizar cruces basados en atributos descriptivos.
+
+Decisión:
+- Conservar el texto original en Bronze.
+- Aplicar TRIM en Silver para eliminar espacios al inicio y al final.
+- No modificar el identificador del comercio.
+
+Hallazgo 3. Espacios adicionales en la ciudad
+37 registros
+- Campo: ciudad.
+- Registros afectados: 37.
+- Porcentaje: 0,21 %.
+
+Impacto en las cifras:
+Una misma ciudad podría aparecer como dos valores diferentes al agrupar información, por ejemplo, "Bogota" y " Bogota ".
+Esto afectaría análisis comerciales por ciudad.
+
+Decisión:
+- Conservar el valor original en Bronze.
+- Aplicar TRIM en Silver.
+- Homologar los valores geográficos si se encuentran diferencias de escritura adicionales.
+
+Hallazgo 4. Diferentes formatos de fecha de afiliación
+El campo fecha_afiliacion contiene tres formatos:
+
+Formato	Registros	Porcentaje
+yyyy-MM-dd	12.280	69,94 %
+yyyyMMdd	1.775	10,11 %
+dd/MM/yyyy	3.503	19,95 %
+Total	17.558	100 %
+
+Impacto en las cifras:
+
+Si se intenta convertir directamente el campo utilizando un único formato, algunos registros podrían quedar como nulos o generar errores de conversión. Esto afectaría análisis de antigüedad y segmentación de comercios por fecha de afiliación.
+
+Decisión:
+- Conservar la fecha original como texto en Bronze.
+- Identificar el formato correspondiente en Silver.
+- Convertir los tres formatos a un único tipo DATE.
+- Registrar los valores que no puedan convertirse como hallazgos de calidad.
+
+En nuestra validación, los 17.558 registros pudieron interpretarse correctamente.
+
+Hallazgo 5. Validación de campos obligatorios
+Se revisaron los campos críticos:
+
+Campo	Valores vacíos
+comercio_id	0
+pais	0
+documento_tributario	0
+estado	0
+fecha_afiliacion	0
+actualizado_en	0
+
+Decisión: no se identificaron registros con valores vacíos en estos campos. No se requiere excluir registros por este motivo.
+
+También se verificó que actualizado_en puede interpretarse correctamente como timestamp.
+
+Hallazgo 6. Distribución de estados y países
+
+Países:
+País	Registros	Porcentaje
+Colombia	10.515	59,88 %
+México	7.043	40,12 %
+
+Estados:
+Estado	Registros	Porcentaje
+ACTIVO	17.394	99,07 %
+INACTIVO	140	0,80 %
+SUSPENDIDO	24	0,14 %
+
+Decisión:
+- Conservar los estados originales en Bronze.
+- Mantener los tres estados en Silver.
+- Para análisis de comercios activos, considerar únicamente ACTIVO.
+- No descartar registros INACTIVO o SUSPENDIDO, porque son información válida del maestro.
+
+1.2 Decisiones de arquitectura para CRM
+La decisión más importante fue tratar CRM como una fuente de snapshots completos, no como CDC.
+
+Por eso:
+1. Cada snapshot se conserva con su fecha.
+2. No hacemos MERGE por comercio_id en Bronze.
+3. No sobrescribimos el historial de semanas anteriores.
+4. La reejecución reemplaza únicamente los snapshots procesados.
+5. En Silver podremos reconstruir la evolución de cada comercio.
+
+Flujo definido para CRM
+CSV de snapshots semanales- 9 archivos / 17.558 registros
+Bronze – crm_comercios - Conservación del histórico y metadatos
+Silver – maestro de comercios - Limpieza, deduplicación y evolución histórica
+
+
+-------------------------------------
+
+2. Catálogos – Productos, canales y taxonomía
+Fuente: Gerencia de Producto y Gobierno de Datos.
+
+Tablas Bronze:
+- catalogos_productos
+- catalogos_canales
+- catalogos_taxonomia
+Los tres archivos se encuentran en ola_1. No existen versiones de estos catálogos en ola_2.
+
+2.1 Catalogos Productos
+Hallazgo 1. Atributos sku_origen sin valor
+- 18 registros tienen sku_origen nulo.
+- Representan el 60 % de los productos.
+- Los otros 12 registros tienen valor.
+
+Impacto en las cifras:
+Si se utiliza sku_origen como llave para cruzar productos con transacciones, los 18 registros sin valor no podrían relacionarse por ese atributo.
+
+Decisión:
+- Conservar los valores nulos en Bronze.
+- No reemplazarlos artificialmente.
+- En Silver, utilizar producto_cod como identificador del producto dentro del país.
+- Evaluar sku_origen como atributo complementario, no como llave obligatoria.
+
+Hallazgo 2. Campo vigente_hasta con valores nulos
+- 29 registros tienen el campo nulo.
+- Representan el 96,67 %.
+- Un registro tiene una fecha de finalización.
+
+Impacto en las cifras:
+Si interpretáramos todos los valores nulos como productos inválidos, estaríamos descartando casi todo el catálogo.
+
+Decisión:
+No consideramos automáticamente estos nulos como errores. Un valor nulo puede representar que el producto no tiene una fecha de finalización definida.
+En Silver se debe conservar esa semántica y utilizar la vigencia para determinar si un producto puede participar en las cifras de negocio.
+
+Hallazgo 3. Diferencias entre líneas de negocio de productos y taxonomía corporativa
+
+Se identificaron 12 etiquetas distintas en linea_negocio de productos, mientras que la taxonomía corporativa contiene 7 líneas oficiales.
+
+Impacto en las cifras:
+
+Si agrupamos las transacciones utilizando directamente linea_negocio, los resultados quedarían fragmentados en categorías que no representan la clasificación corporativa oficial.
+
+Por ejemplo, Recargas y Recargas Tiempo Aire podrían terminar contabilizándose como categorías diferentes cuando deben analizarse bajo una línea corporativa común, previa validación de la equivalencia.
+
+Decisión:
+- Conservar la etiqueta original en Bronze.
+- Utilizar la taxonomía como referencia corporativa.
+- Construir en Silver una homologación entre las etiquetas de productos y las líneas corporativas.
+- No asumir equivalencias sin documentar la regla correspondiente.
+Este hallazgo es especialmente importante para R1.3, porque el enunciado exige homologar la línea corporativa de las transacciones.
+
+Hallazgo 4. Validación de llaves de producto
+- Se revisaron los 30 productos.
+- No se encontraron llaves duplicadas en pais + producto_cod.
+- No se encontraron valores vacíos en producto_cod ni en pais.
+
+Decisión: mantener pais + producto_cod como llave de identificación del producto para los cruces posteriores.
+
+También conservamos comision y limites como estructuras anidadas en Bronze, sin aplanarlas ni alterar sus valores.
+
+2.2 Catálogo de canales
+7 registros revisados
+El archivo contiene la homologación entre los códigos de origen y los canales corporativos.
+
+Hallazgos:
+- 7 registros revisados.
+- 0 campos vacíos.
+- 0 llaves duplicadas en pais + codigo_origen.
+
+Impacto en las cifras:
+No identificamos inconsistencias en la tabla de homologación. Sin embargo, una transacción con un código de canal que no exista en este catálogo no podría homologarse directamente.
+
+Decisión:
+- Conservar los códigos originales.
+- Mantener la homologación definida por país.
+- Utilizar pais + codigo_origen para cruzar las transacciones con el catálogo.
+- En Silver, identificar los códigos de transacción que no encuentren correspondencia, sin asignarles un canal inventado.
+
+2.3 Catálogo de taxonomía corporativa
+7 registros revisados
+La tabla contiene las siete líneas corporativas oficiales.
+
+Hallazgos:
+- 7 registros revisados.
+- 0 valores vacíos.
+- 0 líneas duplicadas.
+Impacto en las cifras:
+
+No se encontraron problemas de integridad en el catálogo. Su importancia está en que será la referencia para consolidar las transacciones de Colombia y México bajo una clasificación única.
+
+Decisión:
+- Conservar el catálogo sin modificar sus descripciones.
+- Utilizarlo como dimensión de referencia en Silver.
+- Homologar las etiquetas originales de productos a estas siete líneas.
+- Identificar los productos cuya línea no pueda homologarse.
+

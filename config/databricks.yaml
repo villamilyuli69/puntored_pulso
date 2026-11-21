@@ -1,0 +1,14 @@
+environment: databricks
+# Ajustar estas rutas al volumen/ubicación de landing y al catálogo/esquemas
+# disponibles en el workspace de prueba. No incluir credenciales en este archivo.
+paths:
+  landing_root: /Volumes/<catalog>/<schema>/<volume>/landing
+  bronze_root: /Volumes/<catalog>/<schema>/<volume>/bronze
+  silver_root: /Volumes/<catalog>/<schema>/<volume>/silver
+  gold_root: /Volumes/<catalog>/<schema>/<volume>/gold
+  quarantine_root: /Volumes/<catalog>/<schema>/<volume>/quarantine
+  results_root: resultados
+spark:
+  app_name: puntored-pulso
+  shuffle_partitions: 8
+  timezone: America/Bogota

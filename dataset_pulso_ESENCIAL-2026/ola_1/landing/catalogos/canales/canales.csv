@@ -1,0 +1,8 @@
+pais,codigo_origen,canal_homologado,descripcion
+CO,1,POS,Terminal punto de venta
+CO,2,APP,App del comercio
+CO,3,WEB,Portal web
+CO,4,API,Integracion API de aliado
+MX,TPV,POS,Terminal punto de venta
+MX,APP,APP,App del comercio
+MX,WS,API,Web service

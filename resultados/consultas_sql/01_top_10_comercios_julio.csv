@@ -1,0 +1,21 @@
+﻿pais,posicion,comercio_id,nombre_comercial,segmento,ciudad,trx_efectivas,ingreso_comision_local
+CO,1,10000005.0,Supermercados Los Alpes 71,Supermercado,Medellin,1600,2395385.00
+CO,2,10000003.0,Supermercados El Triunfo 96,Supermercado,Bogota D.C.,1629,2115493.00
+CO,3,10000002.0,Supermercados El Buen Precio,Supermercado,Barranquilla,1699,1983705.50
+CO,4,10000001.0,Supermercados El Recreo 63,Supermercado,Cartagena,1650,1926226.00
+CO,5,10000962.0,Drogueria Don Pedro 95,Drogueria,Bogota D.C.,597,791397.50
+CO,6,10000004.0,Supermercados El Porvenir 91,Supermercado,Cali,612,751792.00
+CO,7,10001030.0,Tienda de barrio El Sol 47,Tienda de barrio,Bogota D.C.,253,369604.50
+CO,8,10000578.0,Minimercado San Rafael,Drogueria,Manizales,180,350575.50
+CO,9,10000893.0,Tienda de barrio La Esperanza,Tienda de barrio,Bogota D.C.,235,267594.50
+CO,10,10000310.0,Tienda de barrio Don Pedro,Tienda de barrio,Cali,203,258713.50
+MX,1,4002.0,Supermercados La Esquina 73,Supermercado,Merida,1589,11721.12
+MX,2,4003.0,Supermercados El Porvenir 87,Supermercado,Tijuana,1585,11622.81
+MX,3,4001.0,Supermercados Villa Maria,Supermercado,Toluca,1526,11310.21
+MX,4,,,,,238,1762.13
+MX,5,4626.0,Papeleria Villa Maria,Papeleria,Queretaro,166,1233.28
+MX,6,4239.0,Papeleria La Victoria 42,Papeleria,Ciudad de Mexico,158,1061.18
+MX,7,4260.0,Abarrotes San Rafael,Abarrotes,Monterrey,143,1040.29
+MX,8,4794.0,Farmacia San Jose,Farmacia,Ciudad de Mexico,144,989.00
+MX,9,4537.0,Abarrotes Los Alpes,Abarrotes,Ciudad de Mexico,128,966.24
+MX,10,4272.0,Tienda de conveniencia El Ahorro,Tienda de conveniencia,Ciudad de Mexico,126,957.23

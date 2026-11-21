@@ -1,0 +1,12 @@
+﻿pais,linea_negocio_corporativa,trx_reversadas,trx_efectivas,trx_base_reverso,tasa_reverso_pct
+CO,Giros,49,3430,3479,1.41
+CO,Recaudos,304,24581,24885,1.22
+CO,Recargas,231,20711,20942,1.10
+CO,Corresponsalia bancaria,162,15370,15532,1.04
+CO,Seguros,21,2051,2072,1.01
+CO,Pines y entretenimiento,30,3547,3577,0.84
+MX,Recaudos,136,13649,13785,0.99
+MX,Corresponsalia bancaria,23,2352,2375,0.97
+MX,Recargas,228,25144,25372,0.90
+MX,Pines y entretenimiento,33,3665,3698,0.89
+MX,Movilidad,8,929,937,0.85

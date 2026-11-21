@@ -1,0 +1,55 @@
+NIVEL 1
+Paso 1. Diseña la arquitectura
+Landing │ 
+▼ BRONZE │ 
+▼ SILVER │ 
+▼ GOLD
+
+Bronze: Guardar datos casi idénticos al origen.
+Silver: Datos limpios.
+Gold: Métricas para negocio.
+
+Paso 2. - Bronze
+R1.1
+Debes cargar todas las fuentes:
+Colombia: JSON CDC
+México: CSV
+CRM : CSV
+Catálogos: JSON y CSV
+
+--Columnas:
+fecha_ingesta
+archivo_origen
+pais_fuente
+timestamp_procesamiento
+
+--Justificación en DECISIONES.md
+Se eligió parquet para las tablas bronze por ser columnar, comprimido, ampliamente soportado por Spark y compatible con una futura migración a Delta Lake en Databricks.
+
+Paso 3 - Hallazgos de calidad
+R1.2 -NO debes solo limpiar.
+
+Debes cuantificar.
+Hallazgo	Fuente	Cantidad	%	Impacto	Decisión
+Canal desconocido	MX	15	0.03%	No clasifica negocio	Excluir
+Comisión nula	CO	20	0.02%	Afecta ingresos	Cuarentena
+Comercio inexistente	CRM	35	0.04%	No puede enriquecer	Mantener con UNKNOWN
+
+
+
+------------------------
+## Olas de entrega
+Procesa cada ola como una corrida independiente del pipeline, en orden: `ola_1` -> `ola_2`.
+
+| Ola | Contenido (por fecha de llegada a la landing) |
+|-----|------------------------------------------------|
+| ola_1 | Archivos que llegaron entre 2026-06-01 y 2026-06-30 |
+| ola_2 | Archivos que llegaron entre 2026-07-01 y 2026-08-02 |
+
+
+## Definiciones de negocio (vigentes)
+- **Fecha de negocio**: fecha local de la transaccion en su pais (CO: America/Bogota, MX: America/Mexico_City).
+- **Transaccion efectiva**: estado final APROBADA. Un reverso posterior (REVERSADA/CANCELADA) anula la transaccion en su fecha de negocio original.
+- **Ingreso**: comision de la transaccion efectiva en moneda local.
+- Transacciones de comercios o productos de prueba **no** hacen parte de las cifras oficiales.
+- Montos por fuera de los limites del catalogo del producto no son validos para cifras oficiales.

@@ -1,0 +1,577 @@
+{
+  "version": "2026-06-01",
+  "generado_por": "Gerencia de Producto",
+  "productos": [
+    {
+      "producto_cod": "RCD-ENE",
+      "pais": "CO",
+      "sku_origen": null,
+      "nombre": "Recaudo energia",
+      "linea_negocio": "Recaudos",
+      "categoria": "Servicios publicos",
+      "aliado": "Convenio energia",
+      "comision": {
+        "tipo": "FIJA",
+        "valor": 380
+      },
+      "limites": {
+        "monto_min": 1000,
+        "monto_max": 5000000
+      },
+      "activo": true,
+      "vigente_desde": "2024-01-01"
+    },
+    {
+      "producto_cod": "RCD-AGU",
+      "pais": "CO",
+      "sku_origen": null,
+      "nombre": "Recaudo acueducto",
+      "linea_negocio": "Recaudos",
+      "categoria": "Servicios publicos",
+      "aliado": "Convenio acueducto",
+      "comision": {
+        "tipo": "FIJA",
+        "valor": 350
+      },
+      "limites": {
+        "monto_min": 1000,
+        "monto_max": 3000000
+      },
+      "activo": true,
+      "vigente_desde": "2024-01-01"
+    },
+    {
+      "producto_cod": "RCD-GAS",
+      "pais": "CO",
+      "sku_origen": null,
+      "nombre": "Recaudo gas natural",
+      "linea_negocio": "Recaudos",
+      "categoria": "Servicios publicos",
+      "aliado": "Convenio gas",
+      "comision": {
+        "tipo": "FIJA",
+        "valor": 320
+      },
+      "limites": {
+        "monto_min": 1000,
+        "monto_max": 2000000
+      },
+      "activo": true,
+      "vigente_desde": "2024-01-01"
+    },
+    {
+      "producto_cod": "RCD-TEL",
+      "pais": "CO",
+      "sku_origen": null,
+      "nombre": "Recaudo telecomunicaciones",
+      "linea_negocio": "Recaudos",
+      "categoria": "Telecomunicaciones",
+      "aliado": "Convenio telco",
+      "comision": {
+        "tipo": "FIJA",
+        "valor": 400
+      },
+      "limites": {
+        "monto_min": 1000,
+        "monto_max": 3000000
+      },
+      "activo": true,
+      "vigente_desde": "2024-01-01"
+    },
+    {
+      "producto_cod": "RCD-FIN",
+      "pais": "CO",
+      "sku_origen": null,
+      "nombre": "Recaudo cuotas financieras",
+      "linea_negocio": "Recaudos",
+      "categoria": "Financiero",
+      "aliado": "Red Bancaria Aliada",
+      "comision": {
+        "tipo": "FIJA",
+        "valor": 900
+      },
+      "limites": {
+        "monto_min": 5000,
+        "monto_max": 10000000
+      },
+      "activo": true,
+      "vigente_desde": "2024-01-01"
+    },
+    {
+      "producto_cod": "RCG-MOV-A",
+      "pais": "CO",
+      "sku_origen": null,
+      "nombre": "Recarga celular operador A",
+      "linea_negocio": "Recargas",
+      "categoria": "Telefonia movil",
+      "aliado": "Operador A",
+      "comision": {
+        "tipo": "PORCENTAJE",
+        "valor": 5.0
+      },
+      "limites": {
+        "monto_min": 1000,
+        "monto_max": 200000
+      },
+      "activo": true,
+      "vigente_desde": "2024-01-01"
+    },
+    {
+      "producto_cod": "RCG-MOV-B",
+      "pais": "CO",
+      "sku_origen": null,
+      "nombre": "Recarga celular operador B",
+      "linea_negocio": "Recargas",
+      "categoria": "Telefonia movil",
+      "aliado": "Operador B",
+      "comision": {
+        "tipo": "PORCENTAJE",
+        "valor": 4.5
+      },
+      "limites": {
+        "monto_min": 1000,
+        "monto_max": 200000
+      },
+      "activo": true,
+      "vigente_desde": "2024-01-01"
+    },
+    {
+      "producto_cod": "RCG-MOV-C",
+      "pais": "CO",
+      "sku_origen": null,
+      "nombre": "Recarga celular operador C",
+      "linea_negocio": "Recargas",
+      "categoria": "Telefonia movil",
+      "aliado": "Operador C",
+      "comision": {
+        "tipo": "PORCENTAJE",
+        "valor": 5.5
+      },
+      "limites": {
+        "monto_min": 1000,
+        "monto_max": 200000
+      },
+      "activo": true,
+      "vigente_desde": "2024-01-01"
+    },
+    {
+      "producto_cod": "RCG-DAT",
+      "pais": "CO",
+      "sku_origen": null,
+      "nombre": "Paquete de datos",
+      "linea_negocio": "Recargas",
+      "categoria": "Datos moviles",
+      "aliado": "Operador A",
+      "comision": {
+        "tipo": "PORCENTAJE",
+        "valor": 6.0
+      },
+      "limites": {
+        "monto_min": 1000,
+        "monto_max": 200000
+      },
+      "activo": true,
+      "vigente_desde": "2024-01-01"
+    },
+    {
+      "producto_cod": "CB-DEP",
+      "pais": "CO",
+      "sku_origen": null,
+      "nombre": "Deposito en corresponsal",
+      "linea_negocio": "Corresponsalia bancaria",
+      "categoria": "Transaccional bancario",
+      "aliado": "Red Bancaria Aliada",
+      "comision": {
+        "tipo": "FIJA",
+        "valor": 600
+      },
+      "limites": {
+        "monto_min": 10000,
+        "monto_max": 3000000
+      },
+      "activo": true,
+      "vigente_desde": "2024-01-01"
+    },
+    {
+      "producto_cod": "CB-RET",
+      "pais": "CO",
+      "sku_origen": null,
+      "nombre": "Retiro en corresponsal",
+      "linea_negocio": "Corresponsalia bancaria",
+      "categoria": "Transaccional bancario",
+      "aliado": "Red Bancaria Aliada",
+      "comision": {
+        "tipo": "FIJA",
+        "valor": 700
+      },
+      "limites": {
+        "monto_min": 10000,
+        "monto_max": 2000000
+      },
+      "activo": true,
+      "vigente_desde": "2024-01-01"
+    },
+    {
+      "producto_cod": "CB-PCR",
+      "pais": "CO",
+      "sku_origen": null,
+      "nombre": "Pago de credito",
+      "linea_negocio": "Corresponsalia bancaria",
+      "categoria": "Transaccional bancario",
+      "aliado": "Red Bancaria Aliada",
+      "comision": {
+        "tipo": "FIJA",
+        "valor": 650
+      },
+      "limites": {
+        "monto_min": 10000,
+        "monto_max": 5000000
+      },
+      "activo": true,
+      "vigente_desde": "2024-01-01"
+    },
+    {
+      "producto_cod": "CB-CSA",
+      "pais": "CO",
+      "sku_origen": null,
+      "nombre": "Consulta de saldo",
+      "linea_negocio": "Corresponsalia bancaria",
+      "categoria": "Consultas",
+      "aliado": "Red Bancaria Aliada",
+      "comision": {
+        "tipo": "FIJA",
+        "valor": 150
+      },
+      "limites": {
+        "monto_min": 0,
+        "monto_max": 0
+      },
+      "activo": true,
+      "vigente_desde": "2024-01-01"
+    },
+    {
+      "producto_cod": "PIN-JUE",
+      "pais": "CO",
+      "sku_origen": null,
+      "nombre": "Pin juegos en linea",
+      "linea_negocio": "Pines y entretenimiento",
+      "categoria": "Gaming",
+      "aliado": "Distribuidor pines",
+      "comision": {
+        "tipo": "PORCENTAJE",
+        "valor": 7.0
+      },
+      "limites": {
+        "monto_min": 5000,
+        "monto_max": 500000
+      },
+      "activo": true,
+      "vigente_desde": "2024-01-01"
+    },
+    {
+      "producto_cod": "PIN-STR",
+      "pais": "CO",
+      "sku_origen": null,
+      "nombre": "Pin plataformas de streaming",
+      "linea_negocio": "Pines y entretenimiento",
+      "categoria": "Streaming",
+      "aliado": "Distribuidor pines",
+      "comision": {
+        "tipo": "PORCENTAJE",
+        "valor": 6.5
+      },
+      "limites": {
+        "monto_min": 5000,
+        "monto_max": 500000
+      },
+      "activo": true,
+      "vigente_desde": "2024-01-01"
+    },
+    {
+      "producto_cod": "GIR-ENV",
+      "pais": "CO",
+      "sku_origen": null,
+      "nombre": "Giro nacional envio",
+      "linea_negocio": "Giros",
+      "categoria": "Giros nacionales",
+      "aliado": "Operador de giros",
+      "comision": {
+        "tipo": "PORCENTAJE",
+        "valor": 1.2
+      },
+      "limites": {
+        "monto_min": 10000,
+        "monto_max": 3000000
+      },
+      "activo": true,
+      "vigente_desde": "2024-01-01"
+    },
+    {
+      "producto_cod": "GIR-PAG",
+      "pais": "CO",
+      "sku_origen": null,
+      "nombre": "Giro nacional pago",
+      "linea_negocio": "Giros",
+      "categoria": "Giros nacionales",
+      "aliado": "Operador de giros",
+      "comision": {
+        "tipo": "FIJA",
+        "valor": 1500
+      },
+      "limites": {
+        "monto_min": 10000,
+        "monto_max": 3000000
+      },
+      "activo": true,
+      "vigente_desde": "2024-01-01"
+    },
+    {
+      "producto_cod": "SEG-SOAT",
+      "pais": "CO",
+      "sku_origen": null,
+      "nombre": "SOAT",
+      "linea_negocio": "Seguros",
+      "categoria": "Seguros obligatorios",
+      "aliado": "Aseguradora aliada",
+      "comision": {
+        "tipo": "PORCENTAJE",
+        "valor": 3.0
+      },
+      "limites": {
+        "monto_min": 100000,
+        "monto_max": 2500000
+      },
+      "activo": true,
+      "vigente_desde": "2024-01-01"
+    },
+    {
+      "producto_cod": "MX-300101",
+      "pais": "MX",
+      "sku_origen": "300101",
+      "nombre": "Recarga tiempo aire operador X",
+      "linea_negocio": "Recargas Tiempo Aire",
+      "categoria": "Telefonia movil",
+      "aliado": "Operador X",
+      "comision": {
+        "tipo": "PORCENTAJE",
+        "valor": 5.0
+      },
+      "limites": {
+        "monto_min": 10,
+        "monto_max": 1000
+      },
+      "activo": true,
+      "vigente_desde": "2025-03-01"
+    },
+    {
+      "producto_cod": "MX-300102",
+      "pais": "MX",
+      "sku_origen": "300102",
+      "nombre": "Recarga tiempo aire operador Y",
+      "linea_negocio": "Recargas Tiempo Aire",
+      "categoria": "Telefonia movil",
+      "aliado": "Operador Y",
+      "comision": {
+        "tipo": "PORCENTAJE",
+        "valor": 5.5
+      },
+      "limites": {
+        "monto_min": 10,
+        "monto_max": 1000
+      },
+      "activo": true,
+      "vigente_desde": "2025-03-01"
+    },
+    {
+      "producto_cod": "MX-300103",
+      "pais": "MX",
+      "sku_origen": "300103",
+      "nombre": "Recarga tiempo aire operador Z",
+      "linea_negocio": "Recargas Tiempo Aire",
+      "categoria": "Telefonia movil",
+      "aliado": "Operador Z",
+      "comision": {
+        "tipo": "PORCENTAJE",
+        "valor": 6.0
+      },
+      "limites": {
+        "monto_min": 10,
+        "monto_max": 1000
+      },
+      "activo": true,
+      "vigente_desde": "2025-03-01"
+    },
+    {
+      "producto_cod": "MX-400201",
+      "pais": "MX",
+      "sku_origen": "400201",
+      "nombre": "Pago de luz",
+      "linea_negocio": "Pago de Servicios",
+      "categoria": "Servicios publicos",
+      "aliado": "Convenio electrico MX",
+      "comision": {
+        "tipo": "FIJA",
+        "valor": 8.0
+      },
+      "limites": {
+        "monto_min": 10,
+        "monto_max": 30000
+      },
+      "activo": true,
+      "vigente_desde": "2025-03-01"
+    },
+    {
+      "producto_cod": "MX-400202",
+      "pais": "MX",
+      "sku_origen": "400202",
+      "nombre": "Pago de agua",
+      "linea_negocio": "Pago de Servicios",
+      "categoria": "Servicios publicos",
+      "aliado": "Convenio agua MX",
+      "comision": {
+        "tipo": "FIJA",
+        "valor": 7.0
+      },
+      "limites": {
+        "monto_min": 10,
+        "monto_max": 20000
+      },
+      "activo": true,
+      "vigente_desde": "2025-03-01"
+    },
+    {
+      "producto_cod": "MX-400203",
+      "pais": "MX",
+      "sku_origen": "400203",
+      "nombre": "Pago de TV e internet",
+      "linea_negocio": "Pago de Servicios",
+      "categoria": "Telecomunicaciones",
+      "aliado": "Convenio telecom MX",
+      "comision": {
+        "tipo": "FIJA",
+        "valor": 9.0
+      },
+      "limites": {
+        "monto_min": 10,
+        "monto_max": 20000
+      },
+      "activo": true,
+      "vigente_desde": "2025-03-01"
+    },
+    {
+      "producto_cod": "MX-400204",
+      "pais": "MX",
+      "sku_origen": "400204",
+      "nombre": "Pago de gas",
+      "linea_negocio": "Pago de Servicios",
+      "categoria": "Servicios publicos",
+      "aliado": "Convenio gas MX",
+      "comision": {
+        "tipo": "FIJA",
+        "valor": 7.5
+      },
+      "limites": {
+        "monto_min": 10,
+        "monto_max": 20000
+      },
+      "activo": true,
+      "vigente_desde": "2025-03-01"
+    },
+    {
+      "producto_cod": "MX-500301",
+      "pais": "MX",
+      "sku_origen": "500301",
+      "nombre": "Tarjeta de regalo juegos",
+      "linea_negocio": "Tarjetas de Regalo",
+      "categoria": "Gaming",
+      "aliado": "Distribuidor MX",
+      "comision": {
+        "tipo": "PORCENTAJE",
+        "valor": 6.0
+      },
+      "limites": {
+        "monto_min": 50,
+        "monto_max": 5000
+      },
+      "activo": true,
+      "vigente_desde": "2025-03-01"
+    },
+    {
+      "producto_cod": "MX-500302",
+      "pais": "MX",
+      "sku_origen": "500302",
+      "nombre": "Tarjeta de regalo streaming",
+      "linea_negocio": "Tarjetas de Regalo",
+      "categoria": "Streaming",
+      "aliado": "Distribuidor MX",
+      "comision": {
+        "tipo": "PORCENTAJE",
+        "valor": 6.0
+      },
+      "limites": {
+        "monto_min": 50,
+        "monto_max": 5000
+      },
+      "activo": true,
+      "vigente_desde": "2025-03-01"
+    },
+    {
+      "producto_cod": "MX-600401",
+      "pais": "MX",
+      "sku_origen": "600401",
+      "nombre": "Deposito a cuenta",
+      "linea_negocio": "Corresponsalia",
+      "categoria": "Transaccional bancario",
+      "aliado": "Banco aliado MX",
+      "comision": {
+        "tipo": "FIJA",
+        "valor": 12.0
+      },
+      "limites": {
+        "monto_min": 50,
+        "monto_max": 50000
+      },
+      "activo": true,
+      "vigente_desde": "2025-03-01"
+    },
+    {
+      "producto_cod": "MX-700501",
+      "pais": "MX",
+      "sku_origen": "700501",
+      "nombre": "Recarga TAG peaje",
+      "linea_negocio": "Movilidad",
+      "categoria": "Peajes",
+      "aliado": "Operador TAG",
+      "comision": {
+        "tipo": "PORCENTAJE",
+        "valor": 2.0
+      },
+      "limites": {
+        "monto_min": 50,
+        "monto_max": 5000
+      },
+      "activo": true,
+      "vigente_desde": "2025-03-01"
+    },
+    {
+      "producto_cod": "MX-400203-OLD",
+      "pais": "MX",
+      "sku_origen": "400203",
+      "nombre": "TV de paga",
+      "linea_negocio": "Telecomunicaciones",
+      "categoria": "Telecomunicaciones",
+      "aliado": "Convenio telecom MX",
+      "comision": {
+        "tipo": "FIJA",
+        "valor": 6.0
+      },
+      "limites": {
+        "monto_min": 10,
+        "monto_max": 20000
+      },
+      "activo": false,
+      "vigente_desde": "2023-01-01",
+      "vigente_hasta": "2025-02-28"
+    }
+  ]
+}

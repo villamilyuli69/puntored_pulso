@@ -1,0 +1,4 @@
+﻿pais,comercio_id,nombre_comercial,segmento,ciudad,region,plan_comision
+CO,10000100,MINIMERCADO SAN RAFAEL,Minimercado,Barranquilla,Atlantico,PLAN_BASICO
+MX,4288,Farmacia El Progreso,Farmacia,Tijuana,Baja California,PLAN_BASICO
+MX,4448,Abarrotes San Rafael 12,Abarrotes,Leon,Guanajuato,PLAN_BASICO

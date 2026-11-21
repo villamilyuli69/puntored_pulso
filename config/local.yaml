@@ -1,0 +1,13 @@
+environment: local
+paths:
+  landing_root: data/dataset_pulso_ESENCIAL-2026
+  bronze_root: data/lakehouse/bronze
+  silver_root: data/lakehouse/silver
+  gold_root: data/lakehouse/gold
+  quarantine_root: data/lakehouse/quarantine
+  results_root: resultados
+spark:
+  app_name: puntored-pulso
+  master: local[*]
+  shuffle_partitions: 4
+  timezone: America/Bogota
